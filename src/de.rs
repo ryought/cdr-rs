@@ -240,12 +240,11 @@ where
         visitor.visit_byte_buf(self.read_vec()?)
     }
 
-    fn deserialize_option<V>(self, _visitor: V) -> Result<V::Value>
+    fn deserialize_option<V>(self, visitor: V) -> Result<V::Value>
     where
         V: de::Visitor<'de>,
     {
-        println!("unsupported option");
-        Err(Error::TypeNotSupported)
+        visitor.visit_some(self)
     }
 
     fn deserialize_unit<V>(self, visitor: V) -> Result<V::Value>
