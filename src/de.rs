@@ -244,6 +244,7 @@ where
     where
         V: de::Visitor<'de>,
     {
+        println!("unsupported option");
         Err(Error::TypeNotSupported)
     }
 
